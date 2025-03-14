@@ -1,1 +1,1 @@
-const getcourses=(res,r)
+// const getcourses=(res,r)
