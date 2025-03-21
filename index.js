@@ -5,13 +5,18 @@ const app = express()
 
 
 const courses = [
-  { id: 1, name: 'course1',price: 100 },
-  { id: 2, name: 'course2',price: 200 },
-  { id: 3, name: 'course3',price: 300 }
+  { id: 1, name: 'course1', price: 100 },
+  { id: 2, name: 'course2', price: 200 },
+  { id: 3, name: 'course3', price: 300 }
 ]
 
-app.get('/api/course', (req, res) => {
+app.get('/api/courses/id', (req, res) => {
   res.json(courses)
+})
+app.get('/api/courses/:courseId', (req, res) => {
+  const course = courses.find(c => c.id === parseInt(req.params.courseId))
+  if (!course) return res.status(404).send('Course not found')
+  res.json(course)
 })
 
 
